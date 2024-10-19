@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Calculator = () => {
+const Calculator = ({ onCalculate }) => {
     const [input, setInput] = useState('');
 
     const handleInputChange = (e) => {
@@ -8,8 +8,13 @@ const Calculator = () => {
     };
 
     const handleCalculate = () => {
-        // Placeholder for calculation logic
-        alert(`Calculating: ${input}`);
+        try {
+            // Using eval for simplicity; consider a proper parser for production
+            const result = eval(input);
+            onCalculate(result, input);
+        } catch (error) {
+            alert('Invalid expression');
+        }
     };
 
     return (
