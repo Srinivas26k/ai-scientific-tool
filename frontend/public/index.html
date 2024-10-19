@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your App</title>
+    <style>
+        /* Basic styles for layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .left-half, .right-half {
+            width: 48%; /* Adjust width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2, h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div> <!-- This is the target container -->
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="container">
+        <!-- First Half -->
+        <div class="left-half">
+            <!-- Calculator options (keyboard or calculator) -->
+            <div class="calculator-options">
+                <label>
+                    <input type="radio" name="inputMethod" value="keyboard" checked> Keyboard
+                </label>
+                <label>
+                    <input type="radio" name="inputMethod" value="calculator"> Calculator
+                </label>
+            </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+            <!-- Display typed equation -->
+            <div id="equationDisplay">
+                <h3>Equation Display:</h3>
+                <p id="expression">Type or input equation here.</p>
+            </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+            <!-- Calculator interface -->
+            <div id="calculatorInterface">
+                <input type="text" id="expressionInput" placeholder="Enter equation here">
+                <button onclick="calculate()">Calculate</button>
+            </div>
+        </div>
+
+        <!-- Second Half -->
+        <div class="right-half">
+            <h2>Results</h2>
+            <p id="result">Results will be displayed here.</p>
+
+            <h2>Method Details</h2>
+            <p id="methodDetails">Details of the methods used will be displayed here.</p>
+
+            <div class="memory-functions">
+                <button onclick="memoryAdd()">M+</button>
+                <button onclick="memorySubtract()">M-</button>
+                <button onclick="memoryRecall()">MR</button>
+            </div>
+
+            <h2>Calculation History</h2>
+            <ul id="history"></ul>
+        </div>
+    </div>
+
+    <button onclick="toggleTheme()">Toggle Theme</button> <!-- Added Toggle Theme button -->
+    
+    <script src="./path/to/your/script.js"></script> <!-- Adjust the path as necessary -->
+</body>
 </html>

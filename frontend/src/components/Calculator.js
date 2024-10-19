@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { parseMathExpression } from '../mathParser'; // Adjust the path to go up one directory
 
 const Calculator = ({ onCalculate }) => {
     const [input, setInput] = useState('');
@@ -9,11 +10,10 @@ const Calculator = ({ onCalculate }) => {
 
     const handleCalculate = () => {
         try {
-            // Using eval for simplicity; consider a proper parser for production
-            const result = eval(input);
+            const result = parseMathExpression(input); // Use the custom parser
             onCalculate(result, input);
         } catch (error) {
-            alert('Invalid expression');
+            alert('Error: ' + error.message);
         }
     };
 
